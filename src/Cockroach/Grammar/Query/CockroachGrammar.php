@@ -52,6 +52,8 @@ class CockroachGrammar extends Grammar
 
     /**
      * Compile the lock into SQL.
+     * Cockroach DB Doesn't support For Update / For Share Locks. 
+     * Thus this function always returns a empty string as of now. 
      *
      * @param  \Illuminate\Database\Query\Builder  $query
      * @param  bool|string  $value
@@ -59,11 +61,12 @@ class CockroachGrammar extends Grammar
      */
     protected function compileLock(Builder $query, $value)
     {
-        if (! is_string($value)) {
-            return $value ? 'for update' : 'for share';
-        }
+        //if (! is_string($value)) {
+        //    return $value ? 'for update' : 'for share';
+        //}
 
-        return $value;
+        //return $value;
+        return '';
     }
 
     /**
